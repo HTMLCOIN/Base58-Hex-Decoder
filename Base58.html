@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://dev.althash.org/base58/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Base58</title>
+		
+		<script src="./Base58_files/jsbn.js.download"></script>
+		<script src="./Base58_files/jsbn2.js.download"></script>
+		<script src="./Base58_files/base58.js.download"></script>
+
+		<script type="text/javascript">
+			
+			function to_hex(s) {
+			    var r = '';
+			    for (var i = 0; i < s.length; i++) {
+			        var v;
+			        if (s[i] < 0)
+			            s[i] += 256;
+			        v = s[i].toString(16);
+			        if (v.length == 1)
+			            v = '0' + v;
+			        r += v;
+			    }
+			    return r;
+			}
+
+			function decode() {
+			    var plain = base58.decode(document.getElementById("base58").value);
+			    plain = to_hex(plain);
+			    plain = plain.substr(2, 40);
+			    document.getElementById("plain").value = plain;
+			    //alert(plain);
+			}
+		</script>
+
+	<script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script></head>
+	<body>
+		<h2>Base58/Hex decoder for HTMLCOIN Wallet</h2>
+		<form id="enc-dec" action="https://dev.althash.org/base58/#">
+			<table border="0">
+				<tbody><tr>
+					<td>Wallet Address: </td><td><input type="text" size="45" id="base58"><button onclick="decode()">Decode</button></td>
+				</tr>
+				<tr>
+					<td>Smart Contract Address: </td><td><input type="text" size="45" id="plain"></td>
+				</tr>
+			</tbody></table>
+		</form>
+	
+
+</body></html>
